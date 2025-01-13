@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            text-align: center;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>CGPA Calculator</h2>
+    <form id="cgpaForm" onsubmit="calculateCGPA(event)">
+        <!-- Input fields for marks -->
+        <label for="subject1">Subject 1 Marks:</label>
+        <input type="number" id="subject1" name="subject1" placeholder="Enter marks out of 100" required>
+
+        <label for="subject2">Subject 2 Marks:</label>
+        <input type="number" id="subject2" name="subject2" placeholder="Enter marks out of 100" required>
+
+        <label for="subject3">Subject 3 Marks:</label>
+        <input type="number" id="subject3" name="subject3" placeholder="Enter marks out of 100" required>
+
+        <label for="subject4">Subject 4 Marks:</label>
+        <input type="number" id="subject4" name="subject4" placeholder="Enter marks out of 100" required>
+
+        <label for="subject5">Subject 5 Marks:</label>
+        <input type="number" id="subject5" name="subject5" placeholder="Enter marks out of 100" required>
+
+        <!-- Submit button -->
+        <button type="submit">Calculate CGPA</button>
+    </form>
+
+    <!-- Result display -->
+    <div class="result" id="result"></div>
+
+    <script>
+        // Function to calculate CGPA
+        function calculateCGPA(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get marks from input fields
+            const subject1 = parseFloat(document.getElementById('subject1').value);
+            const subject2 = parseFloat(document.getElementById('subject2').value);
+            const subject3 = parseFloat(document.getElementById('subject3').value);
+            const subject4 = parseFloat(document.getElementById('subject4').value);
+            const subject5 = parseFloat(document.getElementById('subject5').value);
+
+            // Check if all inputs are valid
+            if (isNaN(subject1) || isNaN(subject2) || isNaN(subject3) || isNaN(subject4) || isNaN(subject5)) {
+                document.getElementById('result').innerHTML = "Please enter valid marks for all subjects.";
+                return;
+            }
+
+            // Calculate total and average
+            const totalMarks = subject1 + subject2 + subject3 + subject4 + subject5;
+            const averageMarks = totalMarks / 5;
+
+            // Convert average marks to CGPA on a 4.00 scale
+            let cgpa = (averageMarks / 25).toFixed(2); // 100/25 = 4.00
+
+            // Handle edge cases
+            if (cgpa > 4) cgpa = 4.00;
+
+            // Display the result
+            document.getElementById('result').innerHTML = `Your CGPA is: <strong>${cgpa}</strong>`;
+        }
+    </script>
+</body>
+</html>

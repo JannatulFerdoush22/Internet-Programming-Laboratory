@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Data</title>
+</head>
+<body>
+    <h1>Submitted Data</h1>
+    <?php
+    
+   
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
+ {
+   
+         $name = isset($_POST['name']) ? $_POST['name'] : 'Not provided';
+       
+         $student_id  = isset($_POST['student_id']) ? $_POST['student_id'] : 'Not provided';
+        
+         $date_of_birth = isset($_POST['date_of_birth']) ? $_POST['date_of_birth'] : 'Not provided';
+         $address  = isset($_POST['address']) ? $_POST['address'] : 'Not provided';
+  
+         $gender = isset($_POST['gender']) ? $_POST['gender'] : 'Not provided';
+  
+         $level = isset($_POST['level']) ? $_POST['level'] : 'Not provided';
+  
+         $department = isset($_POST['department']) ? $_POST['department'] : 'Not provided';
+  
+         $email  = isset($_POST['email ']) ? $_POST['email '] : 'Not provided';
+  
+         $Contact_number= isset($_POST['Contact_number']) ? $_POST['Contact_number'] : 'Not provided';
+  
+
+
+
+
+
+
+
+
+
+
+                
+     echo "<p><strong>Name:</strong> $name</p>";
+   
+         echo "<p><strong>Student_Id:</strong> $student_id </p>";
+   
+         echo "<p><strong>Date_Of_Birth:</strong> $date_of_birth</p>";
+ echo "<p><strong>Address:</strong> $address</p>";
+ echo "<p><strong>Gender:</strong> $gender</p>";
+ echo "<p><strong>Level:</strong> $level</p>";
+ echo "<p><strong>Department:</strong> $department</p>";
+ echo "<p><strong>Email:</strong> $email</p>";
+ echo "<p><strong>Contact_Number:</strong> $Contact_number</p>";
+
+
+
+      
+  } 
+else {
+      
+      echo "<p>No data submitted.</p>";
+ 
+
+   <a href="view.php">registration</a>
+    }
+    ?>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
